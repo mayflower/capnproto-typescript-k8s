@@ -1,0 +1,5 @@
+/_build
+/env/values.yaml
+/env/ip.yaml
+/env/helm.yaml
+default.nix

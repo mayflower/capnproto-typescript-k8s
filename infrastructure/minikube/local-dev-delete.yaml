@@ -1,0 +1,9 @@
+---
+- name: delete minikube
+  hosts: localhost
+  gather_facts: false
+  become: false
+  vars_files:
+    - "env/values.yaml"
+  roles:
+    - { role: minikube-delete, tags: minikube-delete }

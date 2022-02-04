@@ -1,0 +1,16 @@
+nats:
+    image: nats:2.6.5-alpine
+    jetstream:
+        enabled: true
+    memStorage:
+        enabled: true
+        size: 4Gi
+
+    logging:
+        debug: true
+        logtime: true
+
+cluster:
+    enabled: true
+    replicas: 3
+    noAdvertise: false

@@ -1,0 +1,5 @@
+namespace:
+  messaging: messaging
+  ingress: ingress
+  ingresslb: ingress-lb
+

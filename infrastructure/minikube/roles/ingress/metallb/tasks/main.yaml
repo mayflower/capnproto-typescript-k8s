@@ -1,0 +1,20 @@
+---
+- name: Apply kube-proxy config patch for Metal-LB
+  shell: |-
+    kubectl get configmap/kube-proxy -n kube-system -o yaml | sed 's/mode:.*$/mode: ""/' | sed 's/strictARP:.*$/strictARP: true/' | kubectl replace -f -
+
+- name: add Metal-LB Helm repo
+  kubernetes.core.helm_repository:
+    name: bitnami
+    repo_url: https://charts.bitnami.com/bitnami
+
+- name: Install Metal-LB from Helm chart
+  kubernetes.core.helm:
+    name: metallb
+    chart_ref: bitnami/metallb
+    #chart_version: "{{ version.metallb }}"
+    release_namespace: "{{ namespace.ingresslb }}"
+    update_repo_cache: yes
+    values: "{{ lookup('template', 'values.yaml.j2') | from_yaml }}"
+    state: present
+    wait: true

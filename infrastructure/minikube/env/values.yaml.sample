@@ -1,0 +1,16 @@
+num_cpu: 2
+memory: 8gb
+size_disk: 16gb
+
+# Linux
+vm_driver: virtualbox
+
+# MacOS
+vm_driver: hyperkit
+
+# Kubernetes version
+k8s_version: v1.22.2
+
+minikubeconfig: ~/.kube/config
+
+k8s_debug_mode: yes

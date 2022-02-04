@@ -1,0 +1,38 @@
+---
+- name: add Nats CRD
+  shell: |
+    kubectl apply -f https://raw.githubusercontent.com/nats-io/nack/v0.6.0/deploy/crds.yml
+
+- name: add Nats Helm repo
+  kubernetes.core.helm_repository:
+    name: nats
+    repo_url: https://nats-io.github.io/k8s/helm/charts/
+
+- name: install Nats from Helm chart
+  kubernetes.core.helm:
+    name: nats
+    chart_ref: nats/nats
+    chart_version: v0.11.0
+    release_namespace: "{{ namespace.messaging }}"
+    update_repo_cache: true
+    values: "{{ lookup('template', 'nats-values.yaml.j2') | from_yaml }}"
+    state: present
+    wait: true
+
+- name: install Nats Jetstream from Helm chart
+  kubernetes.core.helm:
+    name: nack-jsc
+    chart_ref: nats/nack
+    chart_version: v0.11.0
+    release_namespace: "{{ namespace.messaging }}"
+    update_repo_cache: true
+    values: "{{ lookup('template', 'nack-values.yaml.j2') | from_yaml }}"
+    state: present
+    wait: true
+  ignore_errors: true
+
+- name: deploy stream
+  k8s:
+    kubeconfig: "{{ minikubeconfig }}"
+    state: present
+    resource_definition: "{{ lookup('template', 'stream.yaml.j2') | from_yaml }}"

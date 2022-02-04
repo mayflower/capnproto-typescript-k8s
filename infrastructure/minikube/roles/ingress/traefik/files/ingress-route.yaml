@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-dashboard-http
+  namespace: ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
+spec:
+  rules:
+    - host: traefik-ui.minikube
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: traefik
+              servicePort: 9000

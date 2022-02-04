@@ -1,0 +1,18 @@
+---
+- name: deploy ingress to minikube
+  hosts: localhost
+  gather_facts: false
+  become: false
+  vars_files:
+    - "env/values.yaml"
+    - "env/helm.yaml"
+    - "env/ip.yaml"
+    - "env/namespace.yaml"
+  roles:
+    - { role: ingress/metallb }
+    - { role: ingress/traefik }
+  pre_tasks:
+    - name: create k8s namespace
+      shell: |
+        kubectl create namespace ingress || true
+        kubectl create namespace ingress-lb || true

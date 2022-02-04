@@ -1,0 +1,14 @@
+---
+- name: deploy NATS JetStream
+  hosts: localhost
+  gather_facts: false
+  become: false
+  vars_files:
+    - "env/namespace.yaml"
+    - "env/values.yaml"
+  roles:
+    - { role: messaging, tags: messaging }
+  pre_tasks:
+    - name: create k8s namespace
+      shell: |
+        kubectl create namespace messaging || true

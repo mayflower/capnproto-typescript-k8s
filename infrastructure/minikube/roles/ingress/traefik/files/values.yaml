@@ -1,0 +1,67 @@
+deployment:
+  enabled: true
+  kind: DaemonSet
+
+ingressRoute:
+  dashboard:
+    enabled: true
+
+providers:
+  kubernetesCRD:
+    enabled: true
+  kubernetesIngress:
+    enabled: true
+
+globalArguments:
+  - "--global.checknewversion=false"
+  - "--global.sendanonymoususage=false"
+
+additionalArguments:
+  - "--api.insecure=true"
+  - "--accesslog=true"
+  - "--log=true"
+  - "--log.level=INFO"
+  - "--log.format=text"
+  - "--ping"
+  - "--entrypoints.web.forwardedheaders.insecure=true"
+
+ports:
+  traefik:
+    port: 9000
+    expose: true
+    exposedPort: 9000
+  web:
+    port: 8000
+    expose: true
+    exposedPort: 80
+  websecure:
+    port: 8443
+    expose: false
+    exposedPort: 443
+
+service:
+  enabled: true
+  type: LoadBalancer
+
+#logs:
+#  general:
+#    level: DEBUG
+#  access:
+#    enabled: true
+
+autoscaling:
+  enabled: false
+
+persistence:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 150Mi
+  requests:
+    cpu: 100m
+    memory: 50Mi
+
+podSecurityContext:
+  fsGroup: null

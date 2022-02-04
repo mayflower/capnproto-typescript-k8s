@@ -1,0 +1,22 @@
+---
+- name: add Helm for Traefik repo
+  kubernetes.core.helm_repository:
+    name: traefik
+    repo_url: https://helm.traefik.io/traefik
+
+- name: install Traefik from Helm chart
+  kubernetes.core.helm:
+    name: traefik
+    chart_ref: traefik/traefik
+    chart_version: "{{ version.traefik }}"
+    release_namespace: "{{ namespace.ingress }}"
+    update_repo_cache: yes
+    values: "{{ lookup('file', 'values.yaml') | from_yaml }}"
+    state: present
+    wait: true
+
+- name: deploy Ingress-Route
+  k8s:
+    kubeconfig: "{{ minikubeconfig }}"
+    state: present
+    resource_definition: "{{ lookup('file', 'ingress-route.yaml') | from_yaml }}"

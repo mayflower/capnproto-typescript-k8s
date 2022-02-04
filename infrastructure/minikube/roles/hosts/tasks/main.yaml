@@ -1,0 +1,10 @@
+---
+- name: add hostnames to /etc/hosts
+  vars:
+    comment: '# added by ansible'
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "traefik-ui.minikube"
+    line: "{{ minikube_ip }} traefik-ui.minikube {{ comment }}"
+    state: present
+    backup: no

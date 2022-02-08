@@ -1,5 +1,5 @@
 username = saggzz
-service_name = message-publisher
+service_name = message-subscriber
 image_tag = latest
 
 image_path = $(username)/$(service_name):$(image_tag)

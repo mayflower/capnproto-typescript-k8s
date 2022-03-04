@@ -28,6 +28,8 @@ export class DatasService {
         date.setMonth(10);
         date.setYear(1964);
         person.setBirthdate(date);
+
+        console.log("sheesh");
         
         return message.toArrayBuffer();
     }

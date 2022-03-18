@@ -18,6 +18,8 @@
     "@types/react": "^16.14.23",
     "@types/react-dom": "^16.9.14",
     "axios": "^0.26.0",
+    "capnp-ts": "^0.7.0",
+    "capnpc-ts": "^0.7.0",
     "formik": "^2.2.9",
     "material-ui-icons": "^1.0.0-beta.36",
     "react": "^17.0.2",

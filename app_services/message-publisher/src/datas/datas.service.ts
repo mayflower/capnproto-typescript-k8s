@@ -28,15 +28,13 @@ export class DatasService {
         date.setMonth(10);
         date.setYear(1964);
         person.setBirthdate(date);
-
-        console.log("sheesh");
         
         return message.toArrayBuffer();
     }
 
     // for local testing purpose
     public deserialize(data:ArrayBuffer): void {
-        const message = new capnp.Message(data, false, false);
+        const message = new capnp.Message(data, true, false);
         const person = message.getRoot(Person);
         const phoneNumbers = person.getPhones();
         const date = person.getBirthdate();

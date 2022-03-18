@@ -34,7 +34,8 @@ export class DatasController {
     }
 
     @Post('dude')
-    public createMessage(@Body() messageValues: any ): void {
+    public createMessage(@Body() messageValues: ArrayBuffer ): void {
         console.log(messageValues);
+        this.datasService.deserialize(messageValues);
     }
 }

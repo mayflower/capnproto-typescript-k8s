@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Formik, Form, ErrorMessage, Field, FieldArray, FormikValues } from "formik";
+import React, { useState } from "react";
+import { Formik, Form, ErrorMessage, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
@@ -16,6 +16,8 @@ import {
   Submit,
   CodeWrapper
 } from "./styles";
+import { deserialize, serializeToCapn } from "./Serialize";
+
 
 
 interface Values {
@@ -24,7 +26,7 @@ interface Values {
   phones: [
     {
       number: string,
-      type: [],
+      type: number
     },
   ];
   birthdate: Date;
@@ -40,36 +42,45 @@ const validationSchema = Yup.object().shape({
   phones: Yup.array().of(
     Yup.object().shape({
       number: Yup.string().required("Please enter dude's phone number"),
-      type: Yup.array().required("Please select dude's phone type")
+      type: Yup.number().required("Please select dude's phone type")
     })
   ).required("How dude is callable?"),
   birthdate: Yup.date().required("Please enter dude's birthdate")
 });
 
+
 function submitPost(values: Values) {
-  axios.post('http://localhost:3001/datas/dude', JSON.stringify(values, null, 2)).then(response => {
+  axios.post('http://localhost:3001/datas/dude', serializeToCapn(values)).then(response => {
     console.log("Status: ", response.status);
     console.log("Data: ", response.data);
     }).catch(error => {
         console.error('Something went wrong!', error);
   });
+  deserialize(serializeToCapn(values));
 }
-
-const App = () => {
+  
+  const App = () => {
   const [formValues, setFormValues] = useState<any>(null);
-
+  
+  const [radioBtn, setRadioBtn] = useState({ selectedValue: '1' });
+  
+  const handleChanges = event => {
+    setRadioBtn({selectedValue: event.target.value});
+  }
+  
   return (
     <PageWrapper>
       <Title>
         Add another dude!
       </Title>
-      <hr />
+      <hr/>
       <Formik
         initialValues={{
           fullname: "",
           email: "",
-          phones:  [{number: '', type: []}],
-          birthdate: undefined
+          phones:  [{number: '', type: null}],
+          birthdate: undefined,
+          pickedType: '',
         }}
 
         validationSchema={validationSchema}
@@ -84,14 +95,17 @@ const App = () => {
             clearTimeout(timeOut);
           }, 1000);
         }}
+
       >
+        
         {({
           values,
           errors,
           touched,
           handleSubmit,
           isSubmitting,
-          isValid
+          isValid,
+          setFieldValue
         }) => {
           return (
             <>
@@ -150,30 +164,45 @@ const App = () => {
                                   valid={touched.phones && !errors.phones}
                                   error={touched.phones && errors.phones}
                                 />
-                              <div role="type" aria-labelledby="checkbox-group">
-                                <Label htmlFor={`phones.${index}.type`}>
-                                  <Field 
-                                    type="checkbox" 
-                                    name={`phones.${index}.type`} 
-                                    value="Mobile"
-                                  />
-                                  Mobile
-                                </Label>
+
+                              <div role="group" aria-labelledby="checkbox-group">
                                 <Label>
-                                  <Field 
-                                    type="checkbox" 
-                                    name={`phones.${index}.type`} 
-                                    value="Home"
-                                  />
-                                  Home
-                                </Label>
-                                <Label>
-                                  <Field 
-                                    type="checkbox" 
-                                    name={`phones.${index}.type`} 
-                                    value="Work"
-                                  />
-                                  Work
+                                  <Label htmlFor={`phones.${index}.type`}>
+                                    <Field
+                                      name={`phones.${index}.type`}
+                                      type="radio" 
+                                      // checked={ values.phones[index].type === 0 }
+                                      onChange={ () => setFieldValue(`phones.${index}.type`, "0") }
+                                      // checked={radioBtn.selectedValue === "0"}
+                                      // onChange={handleChanges}
+                                      value="0"
+                                    />
+                                    Mobile
+                                  </Label>
+                                  <Label>
+                                    <Field
+                                      name={`phones.${index}.type`}
+                                      type="radio"
+                                      // checked={ values.phones[index].type === 1 }
+                                      onChange={ () => setFieldValue(`phones.${index}.type`, "1") }
+                                      // checked={radioBtn.selectedValue === "1"}
+                                      // onChange={handleChanges}
+                                      value="1"
+                                    />
+                                    Home
+                                  </Label>
+                                  <Label>
+                                    <Field
+                                      name={`phones.${index}.type`}
+                                      type="radio"
+                                      // checked={ values.phones[index].type === 2 }
+                                      onChange={ () => setFieldValue(`phones.${index}.type`, "2") }
+                                      // checked={radioBtn.selectedValue === "2"}  
+                                      // onChange={handleChanges}
+                                      value="2"
+                                    />
+                                    Work
+                                  </Label>
                                 </Label>
                               </div>
                               </Label>

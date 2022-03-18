@@ -23,15 +23,6 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
 
   const phoneNumber = person.initPhones(values.phones.length);
 
-  // phoneNumber.forEach((i,j) => {
-  //     i.setNumber(values.phones[j].number);
-  //     console.log(values.phones[j].number);
-  //     values.phones[j].type.forEach((k) => {
-  //       i.setType(k);
-  //       console.log(k);
-  //     })
-  // });
-
   phoneNumber.forEach((i,j) => {
     i.setNumber(values.phones[j].number);
     i.setType(values.phones[j].type);
@@ -50,7 +41,7 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
   return message.toArrayBuffer();
 }
 
-    // for local testing purpose
+// for local testing purpose only
 export const deserialize = (data:ArrayBuffer): void  => {
       const message = new capnp.Message(data, false, false);
       const person = message.getRoot(Person);
@@ -60,17 +51,19 @@ export const deserialize = (data:ArrayBuffer): void  => {
         
       });
 
+      console.log(
+        person.getName(),
+        person.getEmail(),
+    )
+
       phoneNumbers.forEach((i) => {
         i.getNumber();
+        i.getType();
         console.log(i.getNumber());
         console.log(i.getType());
       });
 
       console.log(
-          person.getName(),
-          person.getEmail(),
-          // phoneNumbers.get(0).getNumber(),
-          // phoneNumbers.get(0).getType(),
           date.getDay(),
           date.getMonth(),
           date.getYear()

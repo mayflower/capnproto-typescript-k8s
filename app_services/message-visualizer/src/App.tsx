@@ -62,12 +62,6 @@ function submitPost(values: Values) {
   const App = () => {
   const [formValues, setFormValues] = useState<any>(null);
   
-  const [radioBtn, setRadioBtn] = useState({ selectedValue: '1' });
-  
-  const handleChanges = event => {
-    setRadioBtn({selectedValue: event.target.value});
-  }
-  
   return (
     <PageWrapper>
       <Title>
@@ -171,10 +165,7 @@ function submitPost(values: Values) {
                                     <Field
                                       name={`phones.${index}.type`}
                                       type="radio" 
-                                      // checked={ values.phones[index].type === 0 }
                                       onChange={ () => setFieldValue(`phones.${index}.type`, "0") }
-                                      // checked={radioBtn.selectedValue === "0"}
-                                      // onChange={handleChanges}
                                       value="0"
                                     />
                                     Mobile
@@ -183,10 +174,7 @@ function submitPost(values: Values) {
                                     <Field
                                       name={`phones.${index}.type`}
                                       type="radio"
-                                      // checked={ values.phones[index].type === 1 }
                                       onChange={ () => setFieldValue(`phones.${index}.type`, "1") }
-                                      // checked={radioBtn.selectedValue === "1"}
-                                      // onChange={handleChanges}
                                       value="1"
                                     />
                                     Home
@@ -195,10 +183,7 @@ function submitPost(values: Values) {
                                     <Field
                                       name={`phones.${index}.type`}
                                       type="radio"
-                                      // checked={ values.phones[index].type === 2 }
                                       onChange={ () => setFieldValue(`phones.${index}.type`, "2") }
-                                      // checked={radioBtn.selectedValue === "2"}  
-                                      // onChange={handleChanges}
                                       value="2"
                                     />
                                     Work

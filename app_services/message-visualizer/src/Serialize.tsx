@@ -1,5 +1,4 @@
 import * as capnp from "capnp-ts";
-import { Person_PhoneNumber_Type } from "./contact.capnp.js";
 import { Person } from "./contact.capnp.js";
 
 interface Values {
@@ -31,10 +30,9 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
 });
 
   const date = person.initBirthdate();
-  date.setDay(5); 
-  date.setMonth(5);
-  date.setYear(1964);
-  person.setBirthdate(date);
+  date.setYear(new Date(values.birthdate).getUTCFullYear());
+  date.setMonth(new Date(values.birthdate).getUTCMonth() +1);
+  date.setDay(new Date(values.birthdate).getDate()); 
   
   console.log(message.dump());
 

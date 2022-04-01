@@ -2,16 +2,8 @@ import { NatsClient } from '@alexy4744/nestjs-nats-jetstream-transporter';
 import { Controller, Post, Body, Param } from '@nestjs/common';
 import { DatasService } from './datas.service';
 
-interface MessageValues {
-    fullname: string;
-    email: string;
-    phones: [
-      {
-        number: string,
-        type: [],
-      },
-    ];
-    birthdate: Date;
+interface AnotherDude {
+    dude: Array<number>
 }
 
 @Controller('datas')
@@ -34,8 +26,8 @@ export class DatasController {
     }
 
     @Post('dude')
-    public createMessage(@Body() messageValues: ArrayBuffer ): void {
-        console.log(messageValues);
-        this.datasService.deserialize(messageValues);
+    public createMessage(@Body() messageValues: AnotherDude): void {        
+        this.datasService.deserialize(messageValues.dude);
+        this.natsClient.emit("contact-person", messageValues.dude);
     }
 }

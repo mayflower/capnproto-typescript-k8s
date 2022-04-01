@@ -8,8 +8,9 @@ export class DatasService {
     
     constructor(private promClientService: PrometheusService) {}
 
-    // add monitoring here ...
-
+    //TODO: add monitoring here ...
+    
+    // for local testing purpose
     public serialize(): ArrayBuffer {
         const message = new capnp.Message();
         const person = message.initRoot(Person);
@@ -33,18 +34,26 @@ export class DatasService {
     }
 
     // for local testing purpose
-    public deserialize(data:ArrayBuffer): void {
-        const message = new capnp.Message(data, true, false);
+    public deserialize(data: Array<number>): void {
+        const typedArr = Uint8Array.from(data);
+        const message = new capnp.Message(typedArr, false, false);
         const person = message.getRoot(Person);
         const phoneNumbers = person.getPhones();
         const date = person.getBirthdate();
+  
         console.log(
-            person.getName(),
-            person.getEmail(),
-            phoneNumbers.get(0).getNumber(),
-            phoneNumbers.get(0).getType(),
-            phoneNumbers.get(1).getNumber(),
-            phoneNumbers.get(1).getType(),
+          person.getName(),
+          person.getEmail(),
+        )
+  
+        phoneNumbers.forEach((i) => {
+          i.getNumber();
+          i.getType();
+          console.log(i.getNumber());
+          console.log(i.getType() == 0 ? 'MOBILE' : i.getType() == 1 ? 'HOME' : i.getType() == 2 ? 'WORK' : 'Undefined');
+        });
+  
+        console.log(
             date.getDay(),
             date.getMonth(),
             date.getYear()

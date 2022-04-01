@@ -25,8 +25,8 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
   phoneNumber.forEach((i,j) => {
     i.setNumber(values.phones[j].number);
     i.setType(values.phones[j].type);
-    console.log(values.phones[j].number);
-    console.log(values.phones[j].type);
+    // console.log(values.phones[j].number);
+    // console.log(values.phones[j].type);
 });
 
   const date = person.initBirthdate();
@@ -34,7 +34,7 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
   date.setMonth(new Date(values.birthdate).getUTCMonth() +1);
   date.setDay(new Date(values.birthdate).getDate()); 
   
-  console.log(message.dump());
+  // console.log(message.dump());
 
   return message.toArrayBuffer();
 }
@@ -45,14 +45,11 @@ export const deserialize = (data:ArrayBuffer): void  => {
       const person = message.getRoot(Person);
       const phoneNumbers = person.getPhones();
       const date = person.getBirthdate();
-      person.getPhones().toArray().forEach(elekament => {
-        
-      });
 
       console.log(
         person.getName(),
         person.getEmail(),
-    )
+      )
 
       phoneNumbers.forEach((i) => {
         i.getNumber();
@@ -67,3 +64,11 @@ export const deserialize = (data:ArrayBuffer): void  => {
           date.getYear()
       )
   }
+
+export const createPayload = (values: Values): Array<number>  => {
+    const contactPerson: ArrayBuffer = serializeToCapn(values);
+    console.log(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+    console.log([].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength)));
+    
+    return [].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+}

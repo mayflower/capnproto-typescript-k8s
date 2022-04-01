@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { ButtonGroup } from "@mui/material";
+import { createPayload, deserialize, serializeToCapn } from "./Serialize"; 
 
 import {
   PageWrapper,
@@ -16,9 +17,6 @@ import {
   Submit,
   CodeWrapper
 } from "./styles";
-import { deserialize, serializeToCapn } from "./Serialize";
-
-
 
 interface Values {
   fullname: string;
@@ -48,14 +46,23 @@ const validationSchema = Yup.object().shape({
   birthdate: Yup.date().required("Please enter dude's birthdate")
 });
 
-
-function submitPost(values: Values) {
-  axios.post('http://localhost:3001/datas/dude', serializeToCapn(values)).then(response => {
+function submitPost(values: Values): void {
+  axios.post(
+    'http://localhost:3001/datas/dude', 
+    {"dude": createPayload(values)}, 
+    {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  ).then(response => {
     console.log("Status: ", response.status);
     console.log("Data: ", response.data);
     }).catch(error => {
         console.error('Something went wrong!', error);
   });
+
+  // for local testing purpose only
   deserialize(serializeToCapn(values));
 }
   
@@ -74,7 +81,6 @@ function submitPost(values: Values) {
           email: "",
           phones:  [{number: '', type: null}],
           birthdate: undefined,
-          pickedType: '',
         }}
 
         validationSchema={validationSchema}

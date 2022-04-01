@@ -4,7 +4,7 @@ import { DatasModule } from './datas/datas.module';
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(DatasModule);
+  const app = await NestFactory.create(DatasModule, {cors: true});
   app.connectMicroservice(natsStreamConfig);
   app.startAllMicroservices();
 

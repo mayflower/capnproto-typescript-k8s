@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { ButtonGroup } from "@mui/material";
-import { createPayload, deserialize, serializeToCapn } from "./Serialize"; 
+import { createPayloadDataView, createPayloadNumberArray, createPayloadTypedArray, deserialize, serializeToCapn } from "./Serialize"; 
 
 import {
   PageWrapper,
@@ -48,8 +48,8 @@ const validationSchema = Yup.object().shape({
 
 function submitPost(values: Values): void {
   axios.post(
-    'http://localhost:3001/datas/dude', 
-    {"dude": createPayload(values)}, 
+    'http://localhost:3001/datas/number', 
+    {"dude": createPayloadNumberArray(values)}, 
     {
       headers: {
         'Content-Type': 'application/json'

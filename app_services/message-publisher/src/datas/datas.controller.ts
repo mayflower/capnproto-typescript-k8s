@@ -2,8 +2,16 @@ import { NatsClient } from '@alexy4744/nestjs-nats-jetstream-transporter';
 import { Controller, Post, Body, Param } from '@nestjs/common';
 import { DatasService } from './datas.service';
 
-interface AnotherDude {
+interface DudeNumberArray {
     dude: Array<number>
+}
+
+interface DudeTypedArray {
+    dude: Uint8Array;
+}
+
+interface DudeDataView {
+    dude: DataView;
 }
 
 @Controller('datas')
@@ -25,9 +33,26 @@ export class DatasController {
         this.natsClient.emit("contact-person", [].slice.call(this.datasService.createPayload()));
     }
 
-    @Post('dude')
-    public createMessage(@Body() messageValues: AnotherDude): void {        
-        this.datasService.deserialize(messageValues.dude);
+    @Post('number')
+    public createMessageFromNumberArray(@Body() messageValues: DudeNumberArray): void {        
+        this.datasService.deserializeNumberArray(messageValues.dude);
+        this.natsClient.emit("contact-person", messageValues.dude);
+    }
+
+    @Post('typed')
+    public createMessageFromTypedArray(@Body() messageValues: DudeTypedArray): void {        
+        console.log("Values");
+        console.log(messageValues);
+        this.datasService.deserializeTypedArray(messageValues.dude);
+        this.natsClient.emit("contact-person", messageValues.dude);
+    }
+
+
+    @Post('view')
+    public createMessageFromDataView(@Body() messageValues: DudeDataView): void {        
+        console.log("Values");
+        console.log(messageValues.dude.byteLength);
+        this.datasService.deserializeDataView(messageValues.dude);
         this.natsClient.emit("contact-person", messageValues.dude);
     }
 }

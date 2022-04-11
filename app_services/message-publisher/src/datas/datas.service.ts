@@ -34,25 +34,40 @@ export class DatasService {
     }
 
     // for local testing purpose
-    public deserialize(data: Array<number>): void {
+    public deserializeNumberArray(data: Array<number>): void {
         const typedArr = Uint8Array.from(data);
-        const message = new capnp.Message(typedArr, false, false);
+        this.deserializeMessage(typedArr);
+    }
+
+    // for local testing purpose
+    public deserializeTypedArray(data: Uint8Array): void {
+        const typedArr = Uint8Array.from(Object.values(data));
+        this.deserializeMessage(typedArr);
+    }
+
+    // for local testing purpose
+    public deserializeDataView(data: DataView): void {
+        this.deserializeMessage(data.buffer);
+    }
+
+    public deserializeMessage(data: any) {
+        const message = new capnp.Message(data, false, false);
         const person = message.getRoot(Person);
         const phoneNumbers = person.getPhones();
         const date = person.getBirthdate();
-  
+          
         console.log(
-          person.getName(),
-          person.getEmail(),
+            person.getName(),
+            person.getEmail(),
         )
-  
+          
         phoneNumbers.forEach((i) => {
-          i.getNumber();
-          i.getType();
-          console.log(i.getNumber());
-          console.log(i.getType() == 0 ? 'MOBILE' : i.getType() == 1 ? 'HOME' : i.getType() == 2 ? 'WORK' : 'Undefined');
+            i.getNumber();
+            i.getType();
+            console.log(i.getNumber());
+            console.log(i.getType() == 0 ? 'MOBILE' : i.getType() == 1 ? 'HOME' : i.getType() == 2 ? 'WORK' : 'Undefined');
         });
-  
+          
         console.log(
             date.getDay(),
             date.getMonth(),

@@ -65,10 +65,32 @@ export const deserialize = (data:ArrayBuffer): void  => {
       )
   }
 
-export const createPayload = (values: Values): Array<number>  => {
+// working for a REST-request/MessageQueue because of the not referred array buffer
+export const createPayloadNumberArray = (values: Values): Array<number>  => {
     const contactPerson: ArrayBuffer = serializeToCapn(values);
     console.log(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
     console.log([].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength)));
     
     return [].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+}
+
+//  working for a REST-request/MessageQueue because of the not referred array buffer
+export const createPayloadTypedArray = (values: Values): Uint8Array  => {
+  const contactPerson: ArrayBuffer = serializeToCapn(values);
+  console.log(new Uint8Array(contactPerson));
+
+  return new Uint8Array(contactPerson);
+}
+
+// not working for a REST-request/MessageQueue because of the referred array buffer
+export const createPayloadDataView = (values: Values): DataView  => {
+  const contactPerson: ArrayBuffer = serializeToCapn(values);
+  // console.log(new DataView(contactPerson, 0, contactPerson.byteLength));
+  let view = new DataView(contactPerson, 0, contactPerson.byteLength);
+  let arr: Array<number> = [].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+  for (let i = 0; i < arr.length; i++) {
+    view.setUint8(i, arr[i]);
+  }
+
+  return view;
 }

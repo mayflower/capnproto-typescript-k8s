@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { ButtonGroup } from "@mui/material";
-import { createPayloadDataView, createPayloadNumberArray, createPayloadTypedArray, deserialize, serializeToCapn } from "./Serialize"; 
+import { createPayloadDataView, createPayloadNumberArray, createPayloadTypedArray, deserialize, messageRep, serializeToCapn } from "./Serialize"; 
 
 import {
   PageWrapper,
@@ -64,6 +64,7 @@ function submitPost(values: Values): void {
 
   // for local testing purpose only
   deserialize(serializeToCapn(values));
+  messageRep(serializeToCapn(values));
 }
   
   const App = () => {
@@ -80,7 +81,7 @@ function submitPost(values: Values): void {
           fullname: "",
           email: "",
           phones:  [{number: '', type: null}],
-          birthdate: undefined,
+          birthdate: new Date(),
         }}
 
         validationSchema={validationSchema}

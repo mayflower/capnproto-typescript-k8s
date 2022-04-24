@@ -1,16 +1,17 @@
 import * as capnp from "capnp-ts";
+import { initMessage, _Message } from "capnp-ts/src/serialization/message";
 import { Person } from "./contact.capnp.js";
 
 interface Values {
-    fullname: string;
-    email: string;
-    phones: [
-      {
-        number: string,
-        type: number,
-      },
-    ];
-    birthdate: Date;
+  fullname: string;
+  email: string;
+  phones: [
+    {
+      number: string,
+      type: number,
+    },
+  ];
+  birthdate: Date;
 }
 
 export const serializeToCapn = (values: Values): ArrayBuffer => {
@@ -41,37 +42,45 @@ export const serializeToCapn = (values: Values): ArrayBuffer => {
 
 // for local testing purpose only
 export const deserialize = (data:ArrayBuffer): void  => {
-      const message = new capnp.Message(data, false, false);
-      const person = message.getRoot(Person);
-      const phoneNumbers = person.getPhones();
-      const date = person.getBirthdate();
+  const message = new capnp.Message(data, false, false);
+  const person = message.getRoot(Person);
+  const phoneNumbers = person.getPhones();
+  const date = person.getBirthdate();
 
-      console.log(
-        person.getName(),
-        person.getEmail(),
-      )
+  console.log(
+    person.getName(),
+    person.getEmail(),
+  )
 
-      phoneNumbers.forEach((i) => {
-        i.getNumber();
-        i.getType();
-        console.log(i.getNumber());
-        console.log(i.getType());
-      });
+  phoneNumbers.forEach((i) => {
+    i.getNumber();
+    i.getType();
+    console.log(i.getNumber());
+    console.log(i.getType());
+  });
 
-      console.log(
-          date.getDay(),
-          date.getMonth(),
-          date.getYear()
-      )
-  }
+  console.log(
+    date.getDay(),
+    date.getMonth(),
+    date.getYear()
+  )
+}
+
+// get information of returned ArrayBuffer from serializeToCapn function
+export const messageRep = (src: ArrayBuffer): _Message => {
+  const msg = initMessage(src, false, false); 
+  console.log(msg);
+  
+  return msg;
+}
 
 // working for a REST-request/MessageQueue because of the not referred array buffer
 export const createPayloadNumberArray = (values: Values): Array<number>  => {
-    const contactPerson: ArrayBuffer = serializeToCapn(values);
-    console.log(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
-    console.log([].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength)));
+  const contactPerson: ArrayBuffer = serializeToCapn(values);
+  console.log(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+  console.log([].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength)));
     
-    return [].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
+  return [].slice.call(new Uint8Array(contactPerson, 0, contactPerson.byteLength));
 }
 
 //  working for a REST-request/MessageQueue because of the not referred array buffer

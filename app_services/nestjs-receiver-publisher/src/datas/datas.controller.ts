@@ -10,10 +10,6 @@ interface DudeTypedArray {
     dude: Uint8Array;
 }
 
-interface DudeDataView {
-    dude: DataView;
-}
-
 @Controller('datas')
 export class DatasController {
 
@@ -44,15 +40,6 @@ export class DatasController {
         console.log("Values");
         console.log(messageValues);
         this.datasService.deserializeTypedArray(messageValues.dude);
-        this.natsClient.emit("contact-person", messageValues.dude);
-    }
-
-
-    @Post('view')
-    public createMessageFromDataView(@Body() messageValues: DudeDataView): void {        
-        console.log("Values");
-        console.log(messageValues.dude.byteLength);
-        this.datasService.deserializeDataView(messageValues.dude);
         this.natsClient.emit("contact-person", messageValues.dude);
     }
 }

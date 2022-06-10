@@ -1,0 +1,30 @@
+num_cpu: 2
+memory: 8gb
+size_disk: 16gb
+
+# Linux
+#vm_driver: VirtualBox
+
+# MacOS
+# vm_driver: hyperkit
+
+# Kubernetes version
+k8s_version: v1.21.2
+
+k8s_debug_mode: yes
+
+minikubeconfig: ~/.kube/config
+
+namespace:
+  messaging: messaging
+  ingress: ingress
+  ingresslb: ingress-lb
+
+version:
+  nats: 0.14.2
+  nack: 0.13.0
+  traefik: 9.14.0
+  metallb: 2.3.1
+
+password: "secret"
+volumeSize: 1Gi

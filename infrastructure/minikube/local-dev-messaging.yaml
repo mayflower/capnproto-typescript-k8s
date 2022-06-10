@@ -4,11 +4,13 @@
   gather_facts: false
   become: false
   vars_files:
-    - "env/namespace.yaml"
-    - "env/values.yaml"
+    - "env/properties.yaml"
   roles:
     - { role: messaging, tags: messaging }
   pre_tasks:
-    - name: create k8s namespace
-      shell: |
-        kubectl create namespace messaging || true
+    - name: create namespace 'messaging'
+      k8s:
+        name: "{{ namespace.messaging }}"
+        kind: Namespace
+        state: present
+        kubeconfig: "{{ minikubeconfig }}"

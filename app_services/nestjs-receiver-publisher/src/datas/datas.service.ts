@@ -45,11 +45,6 @@ export class DatasService {
         this.deserializeMessage(typedArr);
     }
 
-    // for local testing purpose
-    public deserializeDataView(data: DataView): void {
-        this.deserializeMessage(data.buffer);
-    }
-
     public deserializeMessage(data: any) {
         const message = new capnp.Message(data, false, false);
         const person = message.getRoot(Person);

@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { natsStreamConfig } from 'config.nats';
+import { natsStreamConfig } from 'src/config.nats';
 import { DatasModule } from './datas/datas.module';
 
 async function bootstrap() {

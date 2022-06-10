@@ -1,6 +1,0 @@
-password: "secret"
-volumeSize: 1Gi
-
-version:
-  traefik: 9.14.0
-  metallb: 2.3.1

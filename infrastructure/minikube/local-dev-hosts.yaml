@@ -4,6 +4,7 @@
   gather_facts: false
   become: yes
   vars_files:
+    - "env/properties.yaml"
     - "env/ip.yaml"
   roles:
     - { role: hosts, tags: hosts }

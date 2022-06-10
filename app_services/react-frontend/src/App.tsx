@@ -47,6 +47,9 @@ const validationSchema = Yup.object().shape({
 });
 
 function submitPost(values: Values): void {
+  /**depending on the payload type used (number array, uint8array) 
+  this data type must also be used in the respective consumers 
+  nestjs-receiver-publisher and nestjs-subscriber**/
   axios.post(
     'http://localhost:3001/datas/number', 
     {"dude": createPayloadNumberArray(values)}, 

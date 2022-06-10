@@ -4,9 +4,7 @@ Change into this [minikube/](../minikube) directory to use `Makefile` targets fr
 
 ### Configuration
 
-> **IMPORTANT**: Go to [minikube/env/](env) directory and copy the `*.yaml.sample` files to the same file without the `.sample` extension into same directory. Edit your new `ENV` files and make changes as needed.
-
-Configure number of CPU cores, maximum amount of memory, disk size and VM driver (we recommend `hyperkit` for MacOS). Therefore, to tweak your `minikube` installation copy and edit a [values.yaml](env/values.yaml.sample) file like this:
+Configure number of CPU cores, maximum amount of memory, disk size and VM driver (we recommend `hyperkit` for MacOS). Therefore, to tweak your `minikube` installation copy and edit a [properties.yaml](env/properties.yaml) file like this:
 
 ````yaml
 num_cpu: 2
@@ -17,7 +15,7 @@ k8s_version: v1.22.2
 minikubeconfig: ~/.kube/config
 ````
 
-> **IMPORTANT**: Also apply port and hostname changes to the `*.properties` files.
+> **IMPORTANT**: Also apply port and hostname changes to the `*.properties` file.
 
 ### Quick Setup
 
@@ -26,34 +24,7 @@ To install a new Kubernetes cluster for `localhost` development including all in
 ```bash
 make install
 ```
-
-### Detailed Setup
-
-Edit [env/helm.yaml](env/helm.yaml.sample) before continue the installation procedure.
-All changeable values being used for Helm charts live here.
-
-Make sure to proceed with the installation in given order as some steps depend on resources installed by previous steps.
-Next installation steps on your new `minikube` cluster:
-
-1. To install a new Kubernetes cluster for `localhost` development go to console and enter:
-   
-   ```bash
-   make install-minikube
-   ```
-   
-   After installation the `minikube` external IP address will be saved in [env/ip.yaml](env).
-
-2. To install **Metal-LB** and **Traefik**:
-
-    ```bash
-    make install-ingress
-    ```
-
-3. To update `/etc/hosts`:
-
-    ```bash
-    make install-hosts
-    ```
+After installation the `minikube` external IP address will be saved in [env/ip.yaml](env).
 
 ### Cleanup and Remove Everything
 

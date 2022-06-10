@@ -4,6 +4,6 @@
   gather_facts: false
   become: false
   vars_files:
-    - "env/values.yaml"
+    - "env/properties.yaml"
   roles:
     - { role: minikube-delete, tags: minikube-delete }

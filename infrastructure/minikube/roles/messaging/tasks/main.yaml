@@ -12,7 +12,7 @@
   kubernetes.core.helm:
     name: nats
     chart_ref: nats/nats
-    chart_version: 0.14.2
+    chart_version: "{{ version.nats }}"
     release_namespace: "{{ namespace.messaging }}"
     update_repo_cache: true
     values: "{{ lookup('template', 'nats-values.yaml.j2') | from_yaml }}"
@@ -23,7 +23,7 @@
   kubernetes.core.helm:
     name: nack-jsc
     chart_ref: nats/nack
-    chart_version: 0.13.0
+    chart_version: "{{ version.nack }}"
     release_namespace: "{{ namespace.messaging }}"
     update_repo_cache: true
     values: "{{ lookup('template', 'nack-values.yaml.j2') | from_yaml }}"

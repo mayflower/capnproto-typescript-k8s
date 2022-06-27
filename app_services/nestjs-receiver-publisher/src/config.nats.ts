@@ -3,14 +3,14 @@ import { NatsTransportStrategy} from '@alexy4744/nestjs-nats-jetstream-transport
 export const natsStreamConfig = {
     strategy: new NatsTransportStrategy({
         connection: {
-          servers: ["nats://localhost:4222"],
+          //servers: 'http://nats.messaging:4222', set in controller
+          timeout: 1000
         },
         streams: [
             {
                 name: 'stream',
-                subjects: [ 'contact-person' ]
+                subjects: [ 'contact-person' ],    
             }
         ]
     })
-
 };

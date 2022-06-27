@@ -13,7 +13,11 @@ interface DudeTypedArray {
 @Controller('datas')
 export class DatasController {
 
-    private natsClient = new NatsClient();
+    private readonly natsClient = new NatsClient(
+        {connection: {
+            servers: ['nats://nats.messaging:4222']
+        }}
+    );
 
     constructor(
         private datasService: DatasService) {}
@@ -32,7 +36,7 @@ export class DatasController {
     @Post('number')
     public createMessageFromNumberArray(@Body() messageValues: DudeNumberArray): void {        
         this.datasService.deserializeNumberArray(messageValues.dude);
-        this.natsClient.emit("contact-person", messageValues.dude);
+        this.publish(messageValues.dude);
     }
 
     @Post('typed')
@@ -40,6 +44,11 @@ export class DatasController {
         console.log("Values");
         console.log(messageValues);
         this.datasService.deserializeTypedArray(messageValues.dude);
-        this.natsClient.emit("contact-person", messageValues.dude);
+        this.publish(messageValues.dude);
+        
+    }
+
+    private publish(data: Array<number> | Uint8Array): void {
+        this.natsClient.emit("contact-person",  [].slice.call(data));
     }
 }

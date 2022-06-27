@@ -1,6 +1,6 @@
 .PHONY: setup-galaxy
 
-install: install-minikube install-hosts install-ingress install-messaging
+install: install-minikube install-hosts install-ingress install-messaging install-capnproto
 
 use-context:
 	 kubectl config use-context minikube
@@ -20,6 +20,9 @@ install-ingress: use-context
 
 install-messaging: use-context
 	ansible-playbook local-dev-messaging.yaml
+
+install-capnproto: use-context
+	ansible-playbook loacl-dev-capnproto.yaml
 
 uninstall:
 	ansible-playbook local-dev-delete.yaml

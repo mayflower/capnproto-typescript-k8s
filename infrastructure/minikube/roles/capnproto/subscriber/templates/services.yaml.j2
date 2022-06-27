@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: message-subscriber-service
+  namespace: "{{ namespace.capnproto }}"
+
+spec:
+  selector:
+    app: message-subscriber
+  type: ClusterIP
+  ports:
+    - port: 3002
+      name: http
+      protocol: TCP

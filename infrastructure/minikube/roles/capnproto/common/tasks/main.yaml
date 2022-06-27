@@ -1,0 +1,6 @@
+---
+- name: create Secret docker-hub-credentials
+  k8s:
+    kubeconfig: "{{ minikubeconfig }}"
+    state: present
+    resource_definition: "{{ lookup('template', 'secrets.yaml.j2') | from_yaml }}"

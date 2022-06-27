@@ -51,7 +51,7 @@ function submitPost(values: Values): void {
   this data type must also be used in the respective consumers 
   nestjs-receiver-publisher and nestjs-subscriber**/
   axios.post(
-    'http://localhost:3001/datas/number', 
+    'http://traefik-ui.minikube/datas/number',
     {"dude": createPayloadNumberArray(values)}, 
     {
       headers: {

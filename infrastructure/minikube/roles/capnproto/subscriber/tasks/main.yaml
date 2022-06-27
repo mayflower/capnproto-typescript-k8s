@@ -1,0 +1,12 @@
+---
+- name: deploy message-subscriber
+  k8s:
+    kubeconfig: "{{ minikubeconfig}}"
+    state: present
+    resource_definition: "{{ lookup('template', 'deployments.yaml.j2') | from_yaml }}"
+
+- name: deploy message-subscriber-service
+  k8s:
+    kubeconfig: "{{ minikubeconfig}}"
+    state: present
+    resource_definition: "{{ lookup('template', 'services.yaml.j2') | from_yaml }}"

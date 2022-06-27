@@ -1,9 +1,11 @@
 import { NatsTransportStrategy} from '@alexy4744/nestjs-nats-jetstream-transporter';
+import { Options } from '@nestjs/common';
 
 export const natsStreamConfig = {
     strategy: new NatsTransportStrategy({
         connection: {
-          servers: ["nats://localhost:4222"],
+            servers: 'http://nats.messaging:4222',
+            timeout: 1000,
         },
         streams: [
             {
@@ -12,5 +14,4 @@ export const natsStreamConfig = {
             }
         ]
     })
-
 };

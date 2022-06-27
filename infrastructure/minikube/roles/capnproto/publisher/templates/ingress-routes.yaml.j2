@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: message-publisher-ingress
+  namespace: {{ namespace.capnproto }}
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+
+spec:
+  rules:
+    - host: traefik-ui.minikube
+      http:
+        paths:
+          - path: /datas/number
+            pathType: Prefix
+            backend:
+              serviceName: message-publisher-service
+              servicePort: 3001
+          - path: /datas/typed
+            pathType: Prefix
+            backend:
+              serviceName: message-publisher-service
+              servicePort: 3001

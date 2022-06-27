@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-subscriber
+  namespace: "{{ namespace.capnproto }}"
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message-subscriber
+  template:
+    metadata:
+      labels:
+        app: message-subscriber
+
+    spec:
+      imagePullSecrets:
+        - name: docker-registry-credentials
+      containers:
+        - name: app
+          image: saggzz/message-subscriber:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3002
+              name: http
+          volumeMounts:
+            - name: docker-registry
+              mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      volumes:
+        - name: docker-registry
+          secret:
+            secretName: docker-registry-credentials

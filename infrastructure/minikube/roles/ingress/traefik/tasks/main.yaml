@@ -4,16 +4,47 @@
     name: traefik
     repo_url: https://helm.traefik.io/traefik
 
-- name: install Traefik from Helm chart
-  kubernetes.core.helm:
-    name: traefik
-    chart_ref: traefik/traefik
-    chart_version: "{{ version.traefik }}"
-    release_namespace: "{{ namespace.ingress }}"
-    update_repo_cache: yes
-    values: "{{ lookup('file', 'values.yaml') | from_yaml }}"
-    state: present
-    wait: true
+####################### Throws strange error ########################
+# - name: install Traefik from Helm chart
+#   kubernetes.core.helm:
+#     name: traefik
+#     chart_ref: traefik/traefik
+#     chart_version: "{{ version.traefik }}"
+#     release_namespace: "{{ namespace.ingress }}"
+#     update_repo_cache: yes
+#     values: "{{ lookup('template', 'values.yaml.j2') | from_yaml }}"
+#     state: present
+#     wait: true
+#   ignore_errors: true
+
+####################### Workaround ########################
+- name: create working directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: build
+  register: k8s_install_dir
+
+- name: working directory
+  debug:
+    var: k8s_install_dir.path
+  when: k8s_debug_mode is defined
+
+- name: Create Helm chart values from template
+  template:
+    src: values.yaml.j2
+    dest: "{{ k8s_install_dir.path }}/values.yaml"
+
+- name: install Traefik from Helm chart (the old way)
+  shell: |-
+    helm --kubeconfig {{ minikubeconfig }} install -n ingress traefik traefik/traefik -f {{ k8s_install_dir.path }}/values.yaml
+
+- name: chore
+  file:
+    path: "{{ k8s_install_dir.path }}"
+    state: absent
+  when: k8s_install_dir.path is defined
+
+####################### Workaround ########################
 
 - name: deploy Ingress-Route
   k8s:

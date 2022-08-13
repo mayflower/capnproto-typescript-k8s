@@ -16,6 +16,7 @@ export class DatasController {
     private readonly natsClient = new NatsClient(
         {connection: {
             servers: ['nats://nats.messaging:4222']
+            //servers: ['nats://localhost:4222']
         }}
     );
 
@@ -49,6 +50,7 @@ export class DatasController {
     }
 
     private publish(data: Array<number> | Uint8Array): void {
-        this.natsClient.emit("contact-person",  [].slice.call(data));
+        //this.natsClient.emit("contact-person",  [].slice.call(data));
+        this.natsClient.emit("contact-person",  "Hallo CloudLand22!");
     }
 }

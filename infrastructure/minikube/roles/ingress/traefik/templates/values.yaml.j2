@@ -42,6 +42,9 @@ ports:
 service:
   enabled: true
   type: LoadBalancer
+  externalIPs: [
+    "{{ minikube_ip }}"
+  ]
 
 #logs:
 #  general:

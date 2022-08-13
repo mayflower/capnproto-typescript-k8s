@@ -34,8 +34,10 @@ To completely remove and destroy the `minikube` cluster later you can use:
 make uninstall
 ```
 
-### Exposed Services
+### Exposed Services/Endpoints
 
 | URL | Application / Service |
 |---- | --------------------- |
-| http://traefik-ui.minikube | Traefik Dashboard (Ingress Routes) |
+| http://ingress.minikube:9000/dashboard/ | Traefik Dashboard |
+| http://ingress.minikube/datas/number | Nats Jetstream Publisher Http Post request Number Array |
+| http://ingress.minikube/datas/typed | Nats Jetstream Publisher Http Post request Uint8Array |

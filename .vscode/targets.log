@@ -1,0 +1,330 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
+# GNU Make 4.3
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2020 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Sat Aug 13 14:15:56 2022
+
+# Variables
+
+# environment
+JAVA_HOME = /nix/store/14m8bjdkkvv6wfwckzjj4jypy88f32y6-openjdk-17.0.3+7/lib/openjdk
+# environment
+GDK_BACKEND = x11
+# environment
+LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
+# environment
+NIX_USER_PROFILE_DIR = /nix/var/nix/profiles/per-user/ben
+# environment
+NIXPKGS_CONFIG = /etc/nix/nixpkgs-config.nix
+# environment
+XDG_DESKTOP_PORTAL_DIR = /nix/store/b2ydd1z7kz8ra26snjpjnf1f5ddxgzsy-xdg-portals/share/xdg-desktop-portal/portals
+# environment
+I3SOCK = /run/user/1000/sway-ipc.1000.2038.sock
+# environment
+QT_PLUGIN_PATH = /home/ben/.nix-profile/lib/qt4/plugins:/home/ben/.nix-profile/lib/kde4/plugins:/etc/profiles/per-user/ben/lib/qt4/plugins:/etc/profiles/per-user/ben/lib/kde4/plugins:/nix/var/nix/profiles/default/lib/qt4/plugins:/nix/var/nix/profiles/default/lib/kde4/plugins:/run/current-system/sw/lib/qt4/plugins:/run/current-system/sw/lib/kde4/plugins
+# environment
+VSCODE_CWD = /home/ben/devcorner
+# environment
+GPG_TTY = /dev/pts/0
+# environment
+SWAYSOCK = /run/user/1000/sway-ipc.1000.2038.sock
+# default
+MAKE_COMMAND := make
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+LOCALE_ARCHIVE = /run/current-system/sw/lib/locale/locale-archive
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# default
+.VARIABLES := 
+# environment
+PWD = /home/ben/devcorner/blogwahnsinn
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+GI_TYPELIB_PATH = /nix/store/44xm8jba98mviq4fnac2qn6rbrlj54x4-gtk+3-3.24.34/lib/girepository-1.0:/nix/store/ram4bavaszpzmmfrga02iq87sawr5g42-librsvg-2.54.4/lib/girepository-1.0:/nix/store/4hpq4fs9msgz2mkw369l8164idddp2g7-libsecret-0.20.5/lib/girepository-1.0:/nix/store/y6p8n0vnkr1zaa70krvwfz8zp69af0xm-atk-2.38.0/lib/girepository-1.0:/nix/store/ha821ps7g6ynv54igjd3i1i52pcl3pyg-gdk-pixbuf-2.42.8/lib/girepository-1.0:/nix/store/c1pzk30ksbff1x3krxnqzrzzfjazsy3l-gsettings-desktop-schemas-42.0/lib/girepository-1.0:/nix/store/z35kyf4qllwzpkdn0y3i295ysc7ny2dj-harfbuzz-3.3.2/lib/girepository-1.0:/nix/store/3w67bnfhxi545h470baa52aiawp8izmn-pango-1.50.7/lib/girepository-1.0:/nix/store/28rz4zmw3yakfjafy6j6cxradgvfskln-gobject-introspection-1.72.0/lib/girepository-1.0:/nix/store/sk8cjzwmznc6md17l7yxji0102p4h9fp-libgnome-keyring-3.12.0/lib/girepository-1.0:/nix/store/6bparlk64h9qn5w7hdm9ahzd1gn0b84f-libnotify-0.7.12/lib/girepository-1.0:/nix/store/bfx9ax89nssc83in2sva3d3gl6hkvzri-at-spi2-core-2.44.1/lib/girepository-1.0:/nix/store/a1n1h6dw1qnsw7bb2cvh6jwcwrxgajfb-libdbusmenu-glib-16.04.0/lib/girepository-1.0
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+XDG_DATA_DIRS = /nix/store/bn9p1fzvb68j96assdhab71k3rkxhr2n-vscode-1.69.1/share:/nix/store/44xm8jba98mviq4fnac2qn6rbrlj54x4-gtk+3-3.24.34/share/gsettings-schemas/gtk+3-3.24.34:/nix/store/c1pzk30ksbff1x3krxnqzrzzfjazsy3l-gsettings-desktop-schemas-42.0/share/gsettings-schemas/gsettings-desktop-schemas-42.0:/nix/store/3vk2m27f9as21qdfqa515gwcrkyvhh61-termite-15/share:/nix/store/nnaijv9wdgwq9j8yf2hyiym5zvh2wdb6-desktops/share:/home/ben/.nix-profile/share:/etc/profiles/per-user/ben/share:/nix/var/nix/profiles/default/share:/run/current-system/sw/share
+# environment
+OLDPWD = /home/ben/devcorner/blogwahnsinn
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_CODE_CACHE_PATH = /home/ben/.config/Code/CachedData/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+# environment
+SSH_ASKPASS = /nix/store/dx8lm7a7nc5qimiia4d1nal7lkkf5gx2-x11-ssh-askpass-1.2.4.1/libexec/x11-ssh-askpass
+# environment
+LANG = C
+# default
+.LOADED := 
+# default
+.INCLUDE_DIRS = /nix/store/4gkcrzpn31sb12fnzclyfzhpd8xh8l6x-gnumake-4.3/include
+# makefile
+MAKEFLAGS = pqrR
+# environment
+LIBEXEC_PATH = /home/ben/.nix-profile/lib/libexec:/etc/profiles/per-user/ben/lib/libexec:/nix/var/nix/profiles/default/lib/libexec:/run/current-system/sw/lib/libexec
+# environment
+GTK_USE_PORTAL = 1
+# makefile
+CURDIR := /home/ben/devcorner/blogwahnsinn
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+LESSOPEN = |/nix/store/vikaff8688ghqpxa69ir9n3szbyphqy5-lesspipe-1.85/bin/lesspipe.sh %s
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MFLAGS = -pqrR
+# environment
+SSH_AUTH_SOCK = /run/user/1000/gnupg/S.gpg-agent.ssh
+# default
+.SHELLFLAGS := -c
+# environment
+WAYLAND_DISPLAY = wayland-1
+# environment
+XDG_CONFIG_DIRS = /etc/xdg:/home/ben/.nix-profile/etc/xdg:/etc/profiles/per-user/ben/etc/xdg:/nix/var/nix/profiles/default/etc/xdg:/run/current-system/sw/etc/xdg
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+P9K_SSH = 0
+# makefile
+MAKEFILE_LIST := 
+# automatic
+@F = $(notdir $@)
+# environment
+ZSH = /nix/store/7zsy20j2rpqf0cxrlgr33clqbw7mmnva-oh-my-zsh-2022-04-24/share/oh-my-zsh
+# environment
+VSCODE_PID = 34195
+# environment
+MOZ_ENABLE_WAYLAND = 1
+# environment
+XDG_SESSION_TYPE = wayland
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+ASPELL_CONF = dict-dir /home/ben/.nix-profile/lib/aspell
+# automatic
+*F = $(notdir $*)
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# environment
+LESSKEYIN_SYSTEM = /nix/store/9xijfbnbfvz9287s459n1p2qi0l3gpdv-lessconfig
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+P9K_TTY = old
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+QTWEBKIT_PLUGIN_PATH = /home/ben/.nix-profile/lib/mozilla/plugins/:/etc/profiles/per-user/ben/lib/mozilla/plugins/:/nix/var/nix/profiles/default/lib/mozilla/plugins/:/run/current-system/sw/lib/mozilla/plugins/
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+GTK_PATH = /home/ben/.nix-profile/lib/gtk-2.0:/home/ben/.nix-profile/lib/gtk-3.0:/home/ben/.nix-profile/lib/gtk-4.0:/etc/profiles/per-user/ben/lib/gtk-2.0:/etc/profiles/per-user/ben/lib/gtk-3.0:/etc/profiles/per-user/ben/lib/gtk-4.0:/nix/var/nix/profiles/default/lib/gtk-2.0:/nix/var/nix/profiles/default/lib/gtk-3.0:/nix/var/nix/profiles/default/lib/gtk-4.0:/run/current-system/sw/lib/gtk-2.0:/run/current-system/sw/lib/gtk-3.0:/run/current-system/sw/lib/gtk-4.0
+# environment
+INFOPATH = /home/ben/.nix-profile/info:/home/ben/.nix-profile/share/info:/etc/profiles/per-user/ben/info:/etc/profiles/per-user/ben/share/info:/nix/var/nix/profiles/default/info:/nix/var/nix/profiles/default/share/info:/run/current-system/sw/info:/run/current-system/sw/share/info
+# makefile
+SHELL = sh
+# default
+MAKECMDGOALS := all
+# environment
+LD_LIBRARY_PATH = 
+# environment
+SHLVL = 3
+# environment
+__NIXOS_SET_ENVIRONMENT_DONE = 1
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+PATH = /nix/store/2k8xwb95l1wz2rad51r6qk35bb0nk9xm-glib-2.72.3-bin/bin:/run/wrappers/bin:/home/ben/.nix-profile/bin:/etc/profiles/per-user/ben/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin
+# environment
+XCURSOR_PATH = /home/ben/.icons:/home/ben/.local/share/icons:/home/ben/.nix-profile/share/icons:/home/ben/.nix-profile/share/pixmaps:/etc/profiles/per-user/ben/share/icons:/etc/profiles/per-user/ben/share/pixmaps:/nix/var/nix/profiles/default/share/icons:/nix/var/nix/profiles/default/share/pixmaps:/run/current-system/sw/share/icons:/run/current-system/sw/share/pixmaps
+# default
+MAKEFILES := 
+# automatic
+^F = $(notdir $^)
+# environment
+_JAVA_AWT_WM_NONREPARENTING = 1
+# automatic
+?F = $(notdir $?)
+# environment
+XDG_SEAT = seat0
+# environment
+XDG_CURRENT_DESKTOP = sway
+# environment
+KDEDIRS = /home/ben/.nix-profile:/etc/profiles/per-user/ben:/nix/var/nix/profiles/default:/run/current-system/sw
+# environment
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+# automatic
++F = $(notdir $+)
+# environment
+LESS = -R
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = sway
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+GIO_EXTRA_MODULES = /nix/store/0djdflxy76jp6hi6rw0hd9xb45mdrf8q-gconf-3.2.6/lib/gio/modules:/nix/store/dkgvkpvs3aka4vlc532ba2nvbj019dmf-dconf-0.40.0-lib/lib/gio/modules:/nix/store/dkgvkpvs3aka4vlc532ba2nvbj019dmf-dconf-0.40.0-lib/lib/gio/modules:/nix/store/dkgvkpvs3aka4vlc532ba2nvbj019dmf-dconf-0.40.0-lib/lib/gio/modules
+# environment
+LOGNAME = ben
+# environment
+XDG_VTNR = 1
+# makefile
+.DEFAULT_GOAL := 
+# environment
+EDITOR = vim
+# environment
+DISPLAY = :1
+# environment
+USER = ben
+# default
+MAKE_VERSION := 4.3
+# environment
+HUSHLOGIN = FALSE
+# environment
+NIX_PROFILES = /run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/ben /home/ben/.nix-profile
+# environment
+PAGER = less
+# environment
+_ = /home/ben/.nix-profile/bin/make
+# environment
+MOZ_PLUGIN_PATH = /home/ben/.nix-profile/lib/mozilla/plugins:/etc/profiles/per-user/ben/lib/mozilla/plugins:/nix/var/nix/profiles/default/lib/mozilla/plugins:/run/current-system/sw/lib/mozilla/plugins
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+COLORTERM = truecolor
+# environment
+GDK_PIXBUF_MODULE_FILE = /nix/store/ram4bavaszpzmmfrga02iq87sawr5g42-librsvg-2.54.4/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
+# environment
+TERMINFO_DIRS = /home/ben/.nix-profile/share/terminfo:/etc/profiles/per-user/ben/share/terminfo:/nix/var/nix/profiles/default/share/terminfo:/run/current-system/sw/share/terminfo
+# environment
+XDG_SESSION_CLASS = user
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/ben
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK = /run/user/1000/vscode-705868f3-1.69.1-main.sock
+# environment
+TERM = xterm-termite
+# environment
+XDG_SESSION_ID = 2
+# environment
+TZDIR = /etc/zoneinfo
+# environment
+XCURSOR_SIZE = 24
+# default
+.RECIPEPREFIX := 
+# automatic
+<F = $(notdir $<)
+# environment
+NIX_PATH = nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos:nixos-config=/etc/nixos/configuration.nix:/nix/var/nix/profiles/per-user/root/channels
+# environment
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = fg=8
+# default
+SUFFIXES := 
+# environment
+_P9K_TTY = /dev/pts/0
+# environment
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+_SWAY_WRAPPER_ALREADY_EXECUTED = 1
+# environment
+VTE_VERSION = 6800
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+# environment
+DIRHISTORY_SIZE = 30
+# variable set hash-table stats:
+# Load=123/1024=12%, Rehash=0, Collisions=4/146=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 65026, inode 96076662): 9 files, no impossibilities.
+
+# 9 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 16 / storage = 190 B / avg = 11 B
+# current buf: size = 8162 B / used = 190 B / count = 16 / avg = 11 B
+
+# strcache performance: lookups = 18 / hit rate = 11%
+# hash-table stats:
+# Load=16/8192=0%, Rehash=0, Collisions=0/18=0%
+# Finished Make data base on Sat Aug 13 14:15:56 2022
+
+ 

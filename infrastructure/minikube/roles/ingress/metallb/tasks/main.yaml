@@ -12,7 +12,7 @@
   kubernetes.core.helm:
     name: metallb
     chart_ref: bitnami/metallb
-    #chart_version: "{{ version.metallb }}"
+    chart_version: "{{ version.metallb }}"
     release_namespace: "{{ namespace.ingresslb }}"
     update_repo_cache: yes
     values: "{{ lookup('template', 'values.yaml.j2') | from_yaml }}"

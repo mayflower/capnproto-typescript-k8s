@@ -1,6 +1,6 @@
----
-apiVersion: extensions/v1beta1
-kind: Ingress
+1---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: message-publisher-ingress
   namespace: {{ namespace.capnproto }}
@@ -8,17 +8,16 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 
 spec:
-  rules:
-    - host: traefik-ui.minikube
-      http:
-        paths:
-          - path: /datas/number
-            pathType: Prefix
-            backend:
-              serviceName: message-publisher-service
-              servicePort: 3001
-          - path: /datas/typed
-            pathType: Prefix
-            backend:
-              serviceName: message-publisher-service
-              servicePort: 3001
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`ingress.minikube`) && PathPrefix(`/datas/number`)
+      kind: Rule
+      services:
+        - name: message-publisher-service
+          port: 3001
+    - match: Host(`ingress.minikube`) && PathPrefix(`/datas/typed`)
+      kind: Rule
+      services:
+        - name: message-publisher-service
+          port: 3001

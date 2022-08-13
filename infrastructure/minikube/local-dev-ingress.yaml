@@ -7,10 +7,10 @@
     - "env/properties.yaml"
     - "env/ip.yaml"
   roles:
-    - { role: ingress/metallb }
     - { role: ingress/traefik }
+    - { role: ingress/metallb }
   pre_tasks:
     - name: create k8s namespace
       shell: |
-        kubectl create namespace ingress || true
+        kubectl create namespace ingress || true &&
         kubectl create namespace ingress-lb || true

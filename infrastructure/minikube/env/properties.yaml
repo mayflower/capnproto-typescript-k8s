@@ -24,8 +24,8 @@ namespace:
 version:
   nats: 0.14.2
   nack: 0.13.0
-  traefik: 9.14.0
-  metallb: 2.3.1
+  traefik: 10.24.0
+  metallb: 4.0.2
 
 password: "secret"
 volumeSize: 1Gi

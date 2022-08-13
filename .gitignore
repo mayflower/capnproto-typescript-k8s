@@ -1,4 +1,4 @@
 .idea
 .dockerconfigjson
 *.nix
-/roles/capnproto/common/templates/secrets.yaml.j2
+infrastructure/minikube/roles/capnproto/common/templates/secrets.yaml.j2

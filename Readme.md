@@ -1,5 +1,6 @@
 # This repository is corresponding to the following blog posts
 [Blog I](https://blog.mayflower.de/13838-capn-proto-react-nestjs.html)
+[Blog II](https://blog.mayflower.de/13915-nats-jetstream-nestjs.html)
 
 # Test setup
 1. ```git clone``` this repository
